@@ -2,8 +2,11 @@ FROM alpine:3.7
 
 
 RUN apk add --no-cache chromium nodejs && \
-    adduser -D -h /app chromium && \
-    rm -rf /var/cache/apk/* 
+    rm -rf /var/cache/apk/*
+
+RUN adduser -D chromium && \
+    mkdir /app && \
+    chown chromium:chromium /app
 
 VOLUME ["/app"]
 USER chromium
